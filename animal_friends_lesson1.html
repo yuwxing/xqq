@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 1 Animal Friends - Section A: Why do you like animals?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* 浅蓝色背景，营造自然氛围 */
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #4a90e2; /* 蓝色标题，与动物主题协调 */
+            text-align: center;
+            font-size: 24px;
+        }
+        .animal-images {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .animal-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 2px solid #4a90e2;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .animal-img:hover {
+            transform: scale(1.1);
+        }
+        .dialogue, .question {
+            background-color: #e6f3ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .interactive {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px dashed #4a90e2;
+            margin: 15px 0;
+        }
+        button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #357abd;
+        }
+        /* 为AI扩展预留的样式 */
+        .ai-response {
+            display: none;
+            background-color: #d4edda;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 1 Animal Friends - Section A: Why do you like animals?</h1>
+        <p>在这个单元，你将：
+            <ul>
+                <li>谈论不同的动物。</li>
+                <li>介绍你最喜欢的动物。</li>
+                <li>使用形容词描述动物。</li>
+            </ul>
+        </p>
+
+        <!-- 活动1a：选择动物 -->
+        <div class="interactive">
+            <h2>活动1a：写出图片中的动物</h2>
+            <p>在下面的方框中选择动物，将它们与图片匹配。</p>
+            <div class="animal-images">
+                <img src="https://via.placeholder.com/120x120?text=Fox" alt="Fox" class="animal-img" onclick="selectAnimal('Fox')">
+                <img src="https://via.placeholder.com/120x120?text=Lion" alt="Lion" class="animal-img" onclick="selectAnimal('Lion')">
+                <img src="https://via.placeholder.com/120x120?text=Tiger" alt="Tiger" class="animal-img" onclick="selectAnimal('Tiger')">
+                <img src="https://via.placeholder.com/120x120?text=Giraffe" alt="Giraffe" class="animal-img" onclick="selectAnimal('Giraffe')">
+                <img src="https://via.placeholder.com/120x120?text=Monkey" alt="Monkey" class="animal-img" onclick="selectAnimal('Monkey')">
+                <img src="https://via.placeholder.com/120x120?text=Eagle" alt="Eagle" class="animal-img" onclick="selectAnimal('Eagle')">
+                <img src="https://via.placeholder.com/120x120?text=Wolf" alt="Wolf" class="animal-img" onclick="selectAnimal('Wolf')">
+                <img src="https://via.placeholder.com/120x120?text=Penguin" alt="Penguin" class="animal-img" onclick="selectAnimal('Penguin')">
+            </div>
+            <p id="selected-animal">你选择的动物：点击图片选择！</p>
+        </div>
+
+        <!-- 活动1b：听力问题 -->
+        <div class="question">
+            <h2>活动1b：听老师的指令，回答问题</h2>
+            <p>问题示例：
+                <ol>
+                    <li>听老师说，动物在哪里？</li>
+                    <li>它们为什么在那里？</li>
+                    <li>它们什么时候应该回来？</li>
+                </ol>
+            </p>
+            <!-- 未来可集成AI语音输入 -->
+            <button onclick="showListeningTip()">点击获取听力提示</button>
+            <div id="listening-tip" class="ai-response">
+                <p>提示：听老师描述动物的位置和时间，记录答案！</p>
+            </div>
+        </div>
+
+        <!-- 活动1c：判断真假 -->
+        <div class="interactive">
+            <h2>活动1c：听对话，判断真假</h2>
+            <p>听对话后，圈出T（真）或F（假）：
+                <ol>
+                    <li>所有三个学生都喜欢猴子。T  F</li>
+                    <li>Yaming不喜欢狼。T  F</li>
+                    <li>狼在学生看到猴子宝宝之前出现了。T  F</li>
+                </ol>
+            </p>
+            <button onclick="showAnswerGuide()">查看答案指导</button>
+            <div id="answer-guide" class="ai-response">
+                <p>指导：仔细听对话内容，判断每个语句是否正确！</p>
+            </div>
+        </div>
+
+        <!-- 活动1d：谈论最喜欢的动物 -->
+        <div class="dialogue">
+            <h2>活动1d：谈论你最喜欢的动物</h2>
+            <p>示例对话：
+                <blockquote>
+                    <p><strong>学生A：</strong> What’s your favourite animal?</p>
+                    <p><strong>学生B：</strong> It’s the monkey.</p>
+                    <p><strong>学生A：</strong> Why do you like monkeys?</p>
+                    <p><strong>学生B：</strong> Because they’re clever and funny.</p>
+                </blockquote>
+            </p>
+            <textarea placeholder="写下你最喜欢的动物和原因..." rows="4" cols="50"></textarea>
+            <button onclick="submitFavorite()">提交你的答案</button>
+            <div id="feedback" class="ai-response">
+                <p>反馈：你的回答很棒！（未来可集成AI反馈系统）</p>
+            </div>
+        </div>
+
+        <!-- 扩展性注释：未来可集成MR/VR/AI -->
+        <!-- <div class="future-note">
+            <p>注：此页面可通过JavaScript集成AI聊天机器人，提供实时对话练习；通过Unity开发MR/VR场景，创建虚拟动物园互动。</p>
+        </div> -->
+    </div>
+
+    <script>
+        // 简单互动功能（未来可扩展为AI）
+        function selectAnimal(animal) {
+            document.getElementById('selected-animal').textContent = `你选择的动物：${animal}`;
+        }
+
+        function showListeningTip() {
+            document.getElementById('listening-tip').style.display = 'block';
+        }
+
+        function showAnswerGuide() {
+            document.getElementById('answer-guide').style.display = 'block';
+        }
+
+        function submitFavorite() {
+            const text = document.querySelector('textarea').value;
+            if (text.trim() !== '') {
+                document.getElementById('feedback').style.display = 'block';
+            } else {
+                alert('请填写你的答案！');
+            }
+        }
+    </script>
+</body>
+</html>
