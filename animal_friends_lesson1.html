@@ -3,186 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit 1 Animal Friends - Section A: Why do you like animals?</title>
+    <title>Unit 1 Animal Friends - 项目式教学：设计虚拟动物园</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff; /* 浅蓝色背景，营造自然氛围 */
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #e6f3ff, #d4edda); /* 自然渐变背景 */
             margin: 0;
             padding: 20px;
             color: #333;
         }
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
         }
         h1 {
-            color: #4a90e2; /* 蓝色标题，与动物主题协调 */
+            color: #4a90e2;
             text-align: center;
-            font-size: 24px;
+            font-size: 28px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
-        .animal-images {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+        .project-title {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .animal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
             margin: 20px 0;
         }
-        .animal-img {
-            width: 120px;
+        .animal-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+        }
+        .animal-card:hover {
+            transform: scale(1.05);
+            background: #e6f3ff;
+        }
+        .animal-card img {
+            width: 100%;
             height: 120px;
             object-fit: cover;
-            border: 2px solid #4a90e2;
             border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.3s;
         }
-        .animal-img:hover {
-            transform: scale(1.1);
-        }
-        .dialogue, .question {
-            background-color: #e6f3ff;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-        .interactive {
-            background-color: #fff3cd;
+        .chat-area, .project-area {
+            background: #fff;
             padding: 15px;
-            border: 1px dashed #4a90e2;
-            margin: 15px 0;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        .chat-messages {
+            height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .input-area input, .input-area textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
         button {
-            background-color: #4a90e2;
+            background: #4a90e2;
             color: white;
             border: none;
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
             margin: 5px;
+            transition: background 0.3s;
         }
         button:hover {
-            background-color: #357abd;
+            background: #357abd;
         }
-        /* 为AI扩展预留的样式 */
-        .ai-response {
-            display: none;
-            background-color: #d4edda;
-            padding: 10px;
-            border-radius: 5px;
+        .team-display {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
             margin: 10px 0;
+        }
+        .mr-vr-note {
+            color: #666;
+            font-style: italic;
+            margin-top: 20px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Unit 1 Animal Friends - Section A: Why do you like animals?</h1>
-        <p>在这个单元，你将：
-            <ul>
-                <li>谈论不同的动物。</li>
-                <li>介绍你最喜欢的动物。</li>
-                <li>使用形容词描述动物。</li>
-            </ul>
-        </p>
+        <h1>Unit 1 Animal Friends - 项目式教学：设计虚拟动物园</h1>
+        <div class="project-title">
+            <p>项目目标：与你的团队合作，设计一个虚拟动物园！探索不同动物，回答“Why do you like animals?”，并用英语描述它们的特征（用形容词如big, clever, funny）。展示你的创意作品给全班，并获取AI和老师的反馈。</p>
+        </div>
 
-        <!-- 活动1a：选择动物 -->
+        <!-- 动物选择与互动（生生互动、MR/VR预留） -->
+        <div class="animal-grid">
+            <div class="animal-card" onclick="selectAnimal('Panda', '大熊猫')">
+                <img src="https://via.placeholder.com/150x120?text=Panda" alt="Panda">
+                <p>大熊猫 - 很可爱（cute）！</p>
+            </div>
+            <div class="animal-card" onclick="selectAnimal('Lion', '狮子')">
+                <img src="https://via.placeholder.com/150x120?text=Lion" alt="Lion">
+                <p>狮子 - 很强大（strong）！</p>
+            </div>
+            <div class="animal-card" onclick="selectAnimal('Elephant', '大象')">
+                <img src="https://via.placeholder.com/150x120?text=Elephant" alt="Elephant">
+                <p>大象 - 很聪明（smart）！</p>
+            </div>
+            <div class="animal-card" onclick="selectAnimal('Monkey', '猴子')">
+                <img src="https://via.placeholder.com/150x120?text=Monkey" alt="Monkey">
+                <p>猴子 - 很滑稽（funny）！</p>
+            </div>
+        </div>
+        <p id="selected-animals">你选择的动物：点击卡片选择你的动物！</p>
+
+        <!-- AI互动聊天区（师生互动、AI预留） -->
+        <div class="chat-area">
+            <h2>与AI聊天：为什么你喜欢这些动物？</h2>
+            <div class="chat-messages" id="chat-messages">
+                <p><strong>AI：</strong> 嗨！告诉我，你最喜欢哪种动物？为什么？</p>
+            </div>
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="输入你的回答...">
+                <button onclick="sendMessage()">发送</button>
+            </div>
+        </div>
+
+        <!-- 项目开发区（生生互动） -->
+        <div class="project-area">
+            <h2>设计你的虚拟动物园</h2>
+            <p>与你的团队合作，描述动物园的布局和动物的特点。写下你的计划：</p>
+            <textarea id="project-plan" rows="5" cols="50" placeholder="例如：我的动物园有大象，因为它们很聪明，我会把它们放在大草地上..."></textarea>
+            <button onclick="submitProject()">提交计划</button>
+            <div id="project-feedback" class="ai-response">
+                <p>反馈：你的计划很棒！（未来可由AI和老师提供详细评价）</p>
+            </div>
+            <div class="team-display" id="team-members">
+                <p>你的团队成员：点击按钮加入团队！</p>
+                <button onclick="addTeamMember()">加入团队</button>
+            </div>
+        </div>
+
+        <!-- 展示与反馈区（师生互动） -->
         <div class="interactive">
-            <h2>活动1a：写出图片中的动物</h2>
-            <p>在下面的方框中选择动物，将它们与图片匹配。</p>
-            <div class="animal-images">
-                <img src="https://via.placeholder.com/120x120?text=Fox" alt="Fox" class="animal-img" onclick="selectAnimal('Fox')">
-                <img src="https://via.placeholder.com/120x120?text=Lion" alt="Lion" class="animal-img" onclick="selectAnimal('Lion')">
-                <img src="https://via.placeholder.com/120x120?text=Tiger" alt="Tiger" class="animal-img" onclick="selectAnimal('Tiger')">
-                <img src="https://via.placeholder.com/120x120?text=Giraffe" alt="Giraffe" class="animal-img" onclick="selectAnimal('Giraffe')">
-                <img src="https://via.placeholder.com/120x120?text=Monkey" alt="Monkey" class="animal-img" onclick="selectAnimal('Monkey')">
-                <img src="https://via.placeholder.com/120x120?text=Eagle" alt="Eagle" class="animal-img" onclick="selectAnimal('Eagle')">
-                <img src="https://via.placeholder.com/120x120?text=Wolf" alt="Wolf" class="animal-img" onclick="selectAnimal('Wolf')">
-                <img src="https://via.placeholder.com/120x120?text=Penguin" alt="Penguin" class="animal-img" onclick="selectAnimal('Penguin')">
-            </div>
-            <p id="selected-animal">你选择的动物：点击图片选择！</p>
-        </div>
-
-        <!-- 活动1b：听力问题 -->
-        <div class="question">
-            <h2>活动1b：听老师的指令，回答问题</h2>
-            <p>问题示例：
-                <ol>
-                    <li>听老师说，动物在哪里？</li>
-                    <li>它们为什么在那里？</li>
-                    <li>它们什么时候应该回来？</li>
-                </ol>
-            </p>
-            <!-- 未来可集成AI语音输入 -->
-            <button onclick="showListeningTip()">点击获取听力提示</button>
-            <div id="listening-tip" class="ai-response">
-                <p>提示：听老师描述动物的位置和时间，记录答案！</p>
+            <h2>展示你的动物园设计</h2>
+            <p>点击按钮模拟向全班展示：</p>
+            <button onclick="showPresentation()">开始展示</button>
+            <div id="presentation-feedback" class="ai-response">
+                <p>老师和AI反馈：你的设计很有创意！大象和猴子的描述很生动，请大家讨论为什么喜欢这些动物。</p>
             </div>
         </div>
 
-        <!-- 活动1c：判断真假 -->
-        <div class="interactive">
-            <h2>活动1c：听对话，判断真假</h2>
-            <p>听对话后，圈出T（真）或F（假）：
-                <ol>
-                    <li>所有三个学生都喜欢猴子。T  F</li>
-                    <li>Yaming不喜欢狼。T  F</li>
-                    <li>狼在学生看到猴子宝宝之前出现了。T  F</li>
-                </ol>
-            </p>
-            <button onclick="showAnswerGuide()">查看答案指导</button>
-            <div id="answer-guide" class="ai-response">
-                <p>指导：仔细听对话内容，判断每个语句是否正确！</p>
-            </div>
+        <!-- MR/VR技术说明（预留接口） -->
+        <div class="mr-vr-note">
+            <p>注：未来可通过Unity开发MR/VR场景，让学生佩戴头显进入虚拟动物园，与真实感动物互动（例如，触摸大象、喂食猴子）。AI可实时提供语音指导和语法纠正，增强沉浸式体验。</p>
         </div>
-
-        <!-- 活动1d：谈论最喜欢的动物 -->
-        <div class="dialogue">
-            <h2>活动1d：谈论你最喜欢的动物</h2>
-            <p>示例对话：
-                <blockquote>
-                    <p><strong>学生A：</strong> What’s your favourite animal?</p>
-                    <p><strong>学生B：</strong> It’s the monkey.</p>
-                    <p><strong>学生A：</strong> Why do you like monkeys?</p>
-                    <p><strong>学生B：</strong> Because they’re clever and funny.</p>
-                </blockquote>
-            </p>
-            <textarea placeholder="写下你最喜欢的动物和原因..." rows="4" cols="50"></textarea>
-            <button onclick="submitFavorite()">提交你的答案</button>
-            <div id="feedback" class="ai-response">
-                <p>反馈：你的回答很棒！（未来可集成AI反馈系统）</p>
-            </div>
-        </div>
-
-        <!-- 扩展性注释：未来可集成MR/VR/AI -->
-        <!-- <div class="future-note">
-            <p>注：此页面可通过JavaScript集成AI聊天机器人，提供实时对话练习；通过Unity开发MR/VR场景，创建虚拟动物园互动。</p>
-        </div> -->
     </div>
 
     <script>
-        // 简单互动功能（未来可扩展为AI）
-        function selectAnimal(animal) {
-            document.getElementById('selected-animal').textContent = `你选择的动物：${animal}`;
-        }
-
-        function showListeningTip() {
-            document.getElementById('listening-tip').style.display = 'block';
-        }
-
-        function showAnswerGuide() {
-            document.getElementById('answer-guide').style.display = 'block';
-        }
-
-        function submitFavorite() {
-            const text = document.querySelector('textarea').value;
-            if (text.trim() !== '') {
-                document.getElementById('feedback').style.display = 'block';
+        // 简单互动功能（未来可扩展为AI/MR/VR）
+        let selectedAnimals = [];
+        function selectAnimal(englishName, chineseName) {
+            if (!selectedAnimals.includes(englishName)) {
+                selectedAnimals.push(englishName);
+                document.getElementById('selected-animals').textContent = `你选择的动物：${selectedAnimals.join(', ')} (${chineseName}等)`;
             } else {
-                alert('请填写你的答案！');
+                alert('你已经选择过这个动物了！');
             }
+        }
+
+        let chatHistory = [];
+        function sendMessage() {
+            const input = document.getElementById('user-input').value;
+            if (input.trim() !== '') {
+                chatHistory.push(`<p><strong>你：</strong> ${input}</p>`);
+                // 模拟AI回复（未来可集成真实AI）
+                const aiResponse = `AI：哇，你喜欢${input.split(' ').pop()}！为什么它很${input.includes('cute') ? '可爱' : '有趣'}？`;
+                chatHistory.push(`<p><strong>AI：</strong> ${aiResponse}</p>`);
+                document.getElementById('chat-messages').innerHTML = chatHistory.join('');
+                document.getElementById('user-input').value = '';
+                document.getElementById('chat-messages').scrollTop = document.getElementById('chat-messages').scrollHeight;
+            }
+        }
+
+        let teamMembers = [];
+        function addTeamMember() {
+            const member = prompt('请输入你的名字加入团队：');
+            if (member && !teamMembers.includes(member)) {
+                teamMembers.push(member);
+                document.getElementById('team-members').innerHTML = `<p>你的团队成员：${teamMembers.join(', ')}</p><button onclick="addTeamMember()">加入团队</button>`;
+            } else {
+                alert('名字已存在或未输入！');
+            }
+        }
+
+        function submitProject() {
+            const plan = document.getElementById('project-plan').value;
+            if (plan.trim() !== '') {
+                document.getElementById('project-feedback').style.display = 'block';
+            } else {
+                alert('请填写你的动物园计划！');
+            }
+        }
+
+        function showPresentation() {
+            document.getElementById('presentation-feedback').style.display = 'block';
+            alert('展示成功！请与同学和老师讨论你的创意。');
         }
     </script>
 </body>
